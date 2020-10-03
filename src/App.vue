@@ -4,10 +4,28 @@
       id="nav-drawer"
       clipped
       dark>
-      <v-subheader class="mt-4 grey--text text--darken-1">
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in generalNav"
+          :key="i"
+          link>
+          <v-list-item-action>
+            <v-icon>
+              {{ item.icon }}
+            </v-icon>
+          </v-list-item-action>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ item.title }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <v-subheader class="grey--text text--darken-1" dense>
         HITLIST
       </v-subheader>
-      <v-list dense>
+      <v-list>
         <v-list-item
           v-for="(item, i) in hitlistNav"
           :key="i"
@@ -24,7 +42,27 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+      </v-list>
+      <v-subheader class="grey--text text--darken-1" dense>
+        ORGANIZATION
+      </v-subheader>
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in organizationNav"
+          :key="i"
+          link>
+          <v-list-item-action>
+            <v-icon>
+              {{ item.icon }}
+            </v-icon>
+          </v-list-item-action>
 
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ item.title }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -51,21 +89,40 @@
 export default {
   name: 'App',
   data: () => ({
+    generalNav: [
+      {
+        title: 'My Profile',
+        path: '',
+        icon: 'mdi-account-circle-outline',
+      },
+      {
+        title: 'Tasks',
+        path: '',
+        icon: 'mdi-checkbox-multiple-marked-outline',
+      },
+    ],
     hitlistNav: [
       {
-        title: 'Submit',
+        title: 'New Report',
         path: '',
-        icon: 'mdi-crosshairs',
+        icon: 'mdi-crosshairs-gps',
       },
       {
-        title: 'Review',
+        title: 'All Reports',
         path: '',
-        icon: 'mdi-message-text-outline',
+        icon: 'mdi-layers-triple-outline',
+      },
+    ],
+    organizationNav: [
+      {
+        title: 'Ongoing Projects',
+        path: '',
+        icon: 'mdi-sprout-outline',
       },
       {
-        title: 'Expiring',
+        title: 'Directory',
         path: '',
-        icon: 'mdi-timer-sand',
+        icon: 'mdi-book-account-outline',
       },
     ],
   }),
@@ -75,6 +132,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 :root {
@@ -88,13 +146,15 @@ export default {
   --gradient-2: #94C83F;
 }
 #title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8rem;
+}
+
+p {
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
 }
 
 #nav-drawer {
-  margin-top: 48px;
-  background-image: linear-gradient(var(--gradient-1), var(--gradient-2));
+  margin-top: 64px;
 }
 </style>
